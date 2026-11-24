@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Лабораторная работа №2</title>
+  <style>
+    header {
+      font-family: sans-serif;
+      color: hotpink;
+      font-size: 18px;
+    }
+    form{
+      color: hotpink;
+      font-size:18px;
+    }
+    .graph-and-form {
+      display: flex;
+      gap: 30px;
+    }
+    form > label {
+      display: block;
+    }
+    input,
+    button {
+      margin:1%;
+      padding:1%;
+    }
+    .error {
+      color:red;
+    }
+    .error::before {
+      content: "Ошибка: ";
+    }
+    th,
+    td {
+      border: 1px solid black;
+      padding: 8px;
+      text-align: center;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    button {
+      background-color: lightpink;
+    }
+    .check {
+      background-color: hotpink;
+    }
+    canvas {
+      border: 1px solid hotpink;
+      background-color: white;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Лабораторная работа №2</h1>
+    <p>Огренич Екатерина</p>
+    <p>Группа: Р3215</p>
+    <p>Вариант 12730</p>
+  </header>
+  <main>
+    <div class="graph-and-form">
+      <canvas id="graph" width="400" height="400"></canvas>
+      <form id="points" method="get" novalidate>
+        <label for="y">Координата -3 &lt; Y &lt; 3:</label>
+        <input type="text" id="y" name="y" inputmode="decimal" required>
+
+        <div id="x-label">Координата X:</div>
+        <div role="group" aria-labelledby="x-label">
+          <label><input type="radio" name="x" value="-2" checked required>−2</label>
+          <label><input type="radio" name="x" value="-1.5" required>−1,5</label>
+          <label><input type="radio" name="x" value="-1" required>−1</label>
+          <label><input type="radio" name="x" value="-0.5" required>−0,5</label>
+          <label><input type="radio" name="x" value="0" required>0</label>
+          <label><input type="radio" name="x" value="0.5" required>0,5</label>
+          <label><input type="radio" name="x" value="1" required>1</label>
+          <label><input type="radio" name="x" value="1.5" required>1,5</label>
+          <label><input type="radio" name="x" value="2" required>2</label>
+        </div>
+
+        <p id="r-label">Радиус R:</p>
+        <div role="group" aria-labelledby="r-label">
+          <label><input type="radio" name="r" value="1" required>1</label>
+          <label><input type="radio" name="r" value="2" required>2</label>
+          <label><input type="radio" name="r" value="3" required>3</label>
+          <label><input type="radio" name="r" value="4" required>4</label>
+          <label><input type="radio" name="r" value="5" required>5</label>
+        </div>
+        <button type="submit" class="check">Проверить</button>
+        <button type="button" id="clear">Очистить таблицу</button>
+
+        <p id="error" class="error" hidden>Неверное значение</p>
+      </form>
+    </div>
+    <table>
+      <thead>
+        <tr>
+          <th>X</th>
+          <th>Y</th>
+          <th>R</th>
+          <th>Результат</th>
+          <th>Дата и время</th>
+          <th>Время обработки, мс</th>
+        </tr>
+      </thead>
+      <tbody id="result">
+      </tbody>
+    </table>
+  </main>
+  <script type="module" src="script.js"></script>
+</body>
+</html>
